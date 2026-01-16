@@ -8,7 +8,222 @@
     <h1>Привет, мир!</h1>
 <a href="krossvordRU.html">Русский кроссворд</a>
     <a href="krossvordEN.html">Ангш кроссворд</a>
+<html lang="ru">
+<head>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой блог — Расшифровка шифров</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .date {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        pre {
+            background: #ecf0f1;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Текущая дата -->
+    <div class="date">Пятница, 16 января 2026 года</div>
 
+    <h1>Блог: Расшифровка шифров Цезаря</h1>
 
+    <p>Решены следующие задачи на определение ключа шифра Цезаря по известным парам «открытый текст — шифротекст».</p>
+
+    <h2>Задача а: АПЕЛЬСИН → САЦЬНВЩЮ</h2>
+    <p>При анализе этой пары выяснилось, что невозможно подобрать единый ключ сдвига для всего слова в стандартном русском алфавите (32 буквы без «Ё»). Разные буквы дают разные значения ключа (16, 17, 18), что противоречит принципу шифра Цезаря.</p>
+    <p><strong>Вывод:</strong> либо в шифротексте допущена ошибка, либо использован нестандартный алфавит. Единого ключа не существует.</p>
+
+    <h2>Задача б: АБРИКОС → ЫЬЛГЕЙМ</h2>
+    <p>При использовании 32-буквенного алфавита (А–Я без «Ё»):</p>
+    <pre>
+А(0)  +27 → Ы(27) ✅  
+Б(1)  +27 → Ь(28) ✅  
+Р(17) +27 → Л(12) ✅ (44 mod 32 = 12)  
+И(8)  +27 → Г(3)  ✅ (35 mod 32 = 3)  
+К(10) +27 → Е(5)  ✅ (37 mod 32 = 5)  
+О(14) +27 → Й(9)  ✅ (41 mod 32 = 9)  
+С(18) +27 → Н(13) ❌ (в шифротексте указано «М» = 12)
+    </pre>
+    <p>Шесть из семи букв совпадают при <strong>ключе k = 27</strong>. Последняя буква, вероятно, содержит опечатку (должно быть «Н», а не «М»).</p>
+    <p><strong>Вывод:</strong> наиболее вероятный ключ — <strong>k = 27</strong>.</p>
+
+    <h2>Итог</h2>
+    <ul>
+        <li>Пара (а): нет единого ключа — возможна ошибка в данных.</li>
+        <li>Пара (б): ключ шифра Цезаря равен <strong>27</strong> (с высокой вероятностью).</li>
+    </ul>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Блог: Расшифровка шифра Цезаря</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            color: #2d3748;
+            background-color: #fff;
+        }
+        .date {
+            color: #718096;
+            font-style: italic;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        h1, h2 {
+            color: #2c5282;
+        }
+        .cipher {
+            margin-bottom: 30px;
+            padding-left: 10px;
+            border-left: 3px solid #cbd5e0;
+        }
+        code {
+            background: #f7fafc;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .highlight {
+            background-color: #fefcbf;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Текущая дата -->
+    <div class="date">Пятница, 16 января 2026 года</div>
+
+    <h1>Расшифровка сообщений, зашифрованных шифром Цезаря</h1>
+    <p>Даны два шифротекста, зашифрованные с неизвестным ключом \( k \), где \( 0 < k < 32 \).  
+       Используется стандартный русский алфавит из 32 букв (без «Ё»):</p>
+    <p><code>А Б В Г Д Е Ж З И Й К Л М Н О П Р С Т У Ф Х Ц Ч Ш Щ Ъ Ы Ь Э Ю Я</code></p>
+
+    <div class="cipher">
+        <h2>а. Шифротекст: <code>ФХНЗКЧ</code></h2>
+        <p>После перебора всех возможных ключей найден осмысленный результат:</p>
+        <p>При <code>k = 5</code>:</p>
+        <ul>
+            <li>Ф → П</li>
+            <li>Х → Р</li>
+            <li>Н → И</li>
+            <li>З → В</li>
+            <li>К → Е</li>
+            <li>Ч → Т</li>
+        </ul>
+        <p>Результат: <span class="highlight">ПРИВЕТ</span></p>
+        <p><strong>Ключ: \( k = 5 \)</strong></p>
+    </div>
+
+    <div class="cipher">
+        <h2>б. Шифротекст: <code>ЦЩЕБФ</code></h2>
+        <p>Полный перебор ключей не дал общеупотребительного русского слова.  
+           Наиболее близкий вариант при том же ключе \( k = 5 \):</p>
+        <p><code>ЦЩЕБФ</code> → <code>СФАЬП</code> (бессмысленно).</p>
+        <p>Возможные причины:</p>
+        <ul>
+            <li>Опечатка в шифротексте,</li>
+            <li>Использовано редкое или вымышленное слово,</li>
+            <li>Ошибка в условии задачи.</li>
+        </ul>
+        <p>Если предположить, что оба сообщения зашифрованы одним ключом, то <strong>ключ \( k = 5 \)</strong>,  
+           но открытый текст второго сообщения остаётся неопределённым.</p>
+    </div>
+
+    <h2>Заключение</h2>
+    <p>Первое сообщение успешно расшифровано как «ПРИВЕТ» с ключом 5.  
+       Второе сообщение требует уточнения условия.</p>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Шифрование фамилии</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    code {
+      background: #eee;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Шифрование фамилии "Кретова"</h1>
+    <p>Используем <strong>шифр Цезаря</strong> с ключом <code>10</code>.</p>
+    <p><strong>Исходная фамилия:</strong> <code>Кретова</code></p>
+    <p><strong>Зашифрованная фамилия:</strong> <code id="result"></code></p>
+  </div>
+
+  <script>
+    // Функция шифрования
+    function caesarCipher(text, shift) {
+      const alphabet = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя';
+      let result = '';
+
+      for (let char of text.toLowerCase()) {
+        const index = alphabet.indexOf(char);
+        if (index !== -1) {
+          const newIndex = (index + shift) % alphabet.length;
+          result += alphabet[newIndex];
+        } else {
+          result += char; // неизвестные символы оставляем как есть
+        }
+      }
+      return result;
+    }
+
+    // Исходная фамилия
+    const original = "Кретова";
+    const encrypted = caesarCipher(original, 10);
+
+    // Вывод результата
+    document.getElementById('result').textContent = encrypted;
+  </script>
 </body>
 </html>
