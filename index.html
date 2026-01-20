@@ -195,3 +195,105 @@ img src<="https://img.freepik.com/premium-vector/2d-christmas-tree_23-2148751283
     </p>
 </body>
 </html>
+    <!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Генерация RSA-ключей: пример с p=7, q=11</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      color: #333;
+      background-color: #fafafa;
+    }
+    h1, h2 {
+      color: #2c3e50;
+    }
+    code {
+      background: #f1f1f1;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+    pre {
+      background: #2d2d2d;
+      color: #f8f8f2;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    .date {
+      color: #7f8c8d;
+      font-style: italic;
+      margin-bottom: 24px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Генерация RSA-ключей: пошаговый пример</h1>
+    <div class="date">20 января 2026 г.</div>
+  </header>
+
+  <main>
+    <p>
+      В этом посте мы рассмотрим, как вручную создать пару ключей по алгоритму RSA,
+      используя небольшие простые числа. Это учебный пример — в реальных системах
+      используются гораздо большие числа.
+    </p>
+
+    <h2>1. Выбираем простые числа \( p \) и \( q \)</h2>
+    <p>Возьмём:</p>
+    <ul>
+      <li>\( p = 7 \)</li>
+      <li>\( q = 11 \)</li>
+    </ul>
+
+    <h2>2. Вычисляем \( n = p \times q \)</h2>
+    <p>\( n = 7 \times 11 = 77 \)</p>
+
+    <h2>3. Вычисляем функцию Эйлера \( \varphi(n) \)</h2>
+    <p>\( \varphi(n) = (p - 1)(q - 1) = 6 \times 10 = 60 \)</p>
+
+    <h2>4. Выбираем открытую экспоненту \( e \)</h2>
+    <p>Условия:</p>
+    <ul>
+      <li>\( 1 < e < 60 \)</li>
+      <li>\( \gcd(e, 60) = 1 \)</li>
+    </ul>
+    <p>Выбираем \( e = 7 \) → \( \gcd(7, 60) = 1 \) ✅</p>
+
+    <h2>5. Находим закрытый ключ \( d \)</h2>
+    <p>Ищем \( d \) такое, что:</p>
+    <p>\( (e \cdot d) \bmod \varphi(n) = 1 \)</p>
+    <p>То есть: \( (7 \cdot d) \bmod 60 = 1 \)</p>
+    <p>Решение: \( d = 43 \), потому что \( 7 \times 43 = 301 \), а \( 301 \bmod 60 = 1 \)</p>
+
+    <h2>Итоговые ключи</h2>
+    <ul>
+      <li><strong>Открытый ключ:</strong> \( (n, e) = (77, 7) \)</li>
+      <li><strong>Закрытый ключ:</strong> \( (n, d) = (77, 43) \)</li>
+    </ul>
+
+    <p>
+      Открытый ключ можно публиковать — им шифруют сообщения.<br>
+      Закрытый ключ должен храниться в секрете — им расшифровывают.
+    </p>
+
+    <h2>Примечание</h2>
+    <p>
+      Этот пример предназначен исключительно для обучения. В реальных криптосистемах
+      используются простые числа длиной сотни или тысячи бит, чтобы обеспечить безопасность.
+    </p>
+  </main>
+
+  <footer style="margin-top: 40px; color: #7f8c8d; font-size: 0.9em;">
+    © 2026 • Блог об информационной безопасности и математике
+  </footer>
+</body>
+</html>
